@@ -1,0 +1,14 @@
+{
+  "name": "challengejobsity",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "cypress open"
+  },
+  "author": "Daniela Carrillo",
+  "license": "ISC",
+  "devDependencies": {
+    "cypress": "^10.1.0"
+  }
+}
