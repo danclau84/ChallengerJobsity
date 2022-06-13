@@ -29,9 +29,16 @@ describe("Testing - AutomationPractice.com", () =>{
 
     it("Validate empty form",() =>{
         cy.get('#submitMessage > span').click() //submit a button send
-        //cy.get('ol > li').should("have.text","There is 1 error") // expect a successful message
         cy.contains('Invalid email address.')
-        cy.get('#email').type("daniela.carrillo@outlook.com") //Input a email
+        cy.get('#email').type("daniela.carrillo") //Input a wrong email
+        cy.get('#submitMessage > span').click() //submit a button send
+        cy.contains('Invalid email address.')
+        cy.get('#email').clear()
+        cy.get('#email').type("daniela.carrillo$$##()@outlook.com") //Input a wrong email
+        cy.get('#submitMessage > span').click() //submit a button send
+        cy.contains('Invalid email address.')
+        cy.get('#email').clear()
+        cy.get('#email').type("daniela.carrillo@outlook.com") //Input a wrong email
         cy.get('#submitMessage > span').click() //submit a button send
         cy.contains('The message cannot be blank.')
         cy.get('#message').type("Testing text automation") //imput message
@@ -39,6 +46,7 @@ describe("Testing - AutomationPractice.com", () =>{
         cy.contains('Please select a subject from the list provided.')
         cy.get('#id_contact').select("Webmaster") //Select option Webmaster service
         cy.get('#submitMessage > span').click() //submit a button send
+        cy.contains('Your message has been successfully sent to our team.')
     })
 
 })
